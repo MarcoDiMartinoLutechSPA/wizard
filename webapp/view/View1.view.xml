@@ -1,0 +1,39 @@
+<mvc:View controllerName="sap.btp.wizard.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+
+   <f:DynamicPage id="dynamicPage" title="{i18n>title}" showFooter="true">
+        <f:header>
+            <f:DynamicPageHeader>
+                <Wizard id="myWizard" showNextButton="false" renderMode="Page">
+                    <WizardStep id="step1" title="Impiegato">
+                        <core:Fragment fragmentName="sap.btp.wizard.view.fragment.Step1" type="XML"/>
+                    </WizardStep>
+                    <WizardStep id="step2" title="Prodotti">
+                        <core:Fragment fragmentName="sap.btp.wizard.view.fragment.Step2" type="XML"/>
+                    </WizardStep>
+                    <WizardStep id="step3" title="Clienti">
+                        <core:Fragment fragmentName="sap.btp.wizard.view.fragment.Step3" type="XML"/>
+                    </WizardStep>
+                    <WizardStep id="step4" title="Ricapitolazione">
+                        <core:Fragment fragmentName="sap.btp.wizard.view.fragment.Step4" type="XML"/>
+                    </WizardStep>
+                </Wizard>
+            </f:DynamicPageHeader>
+        </f:header>
+        
+        <f:footer>
+            <OverflowToolbar>
+                <ToolbarSpacer></ToolbarSpacer>
+
+                <!-- Utilizza il binding per la visibilità dei pulsanti nel footer -->
+                <Button text="Indietro" id="previousStep" visible="{visibilityModel>/backButtonVisible}" press="onPreviousStep"></Button>
+                <Button text="Avanti" id="nextStep" visible="{visibilityModel>/nextButtonVisible}" press="onNextStep"></Button>
+                <Button text="Conferma" id="confirmButton" visible="{visibilityModel>/confirmButtonVisible}" press="onConfirmOrder"></Button>
+            </OverflowToolbar>
+        </f:footer>
+    </f:DynamicPage>
+</mvc:View>
